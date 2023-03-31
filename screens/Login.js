@@ -154,6 +154,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    backgroundColor: Colors.white,
+    // elevation: 10,
+    // height: 40,
   },
   cardHeaderSignup: {
     backgroundColor: Colors.primary,
@@ -190,5 +193,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  loginCont: {
+    width: "100%",
+    justifyContent: "center",
+    marginVertical: 10,
+  },
+  input: {
+    borderBottomColor: Colors.grey,
+    borderBottomWidth: 1,
+    marginVertical: 5,
+    paddingVertical: 2,
+    paddingHorizontal: 10,
+  },
+  cardFooter:{
+    flex: 1,
+    flexDirection: "row",
+    justifyContent:"flex-end"
   },
 });
