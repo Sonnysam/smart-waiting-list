@@ -3,6 +3,7 @@ import React from "react";
 import Colors from "../constants/Colors";
 import tw from "twrnc";
 
+
 export default function GetStarted({ navigation }) {
   return (
     <View style={styles.container}>
@@ -14,7 +15,7 @@ export default function GetStarted({ navigation }) {
         />
       </View>
       <View style={styles.benefits}>
-        <Text style={{ color: Colors.white, fontSize: 20, fontWeight: "bold" }}>
+        <Text style={{ color: Colors.white, fontSize: 25, fontWeight: "bold" }}>
           Benefits
         </Text>
         <View style={{ padding: 20 }}>
