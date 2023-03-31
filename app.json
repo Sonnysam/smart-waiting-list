@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "Smart waiting List",
+    "slug": "smart-waiting-list",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/user.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffff"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/user.png",
+          "color": "#ffffff",
+          "sounds": [
+            "./assets/sounds/notification-sound.wav",
+            "./assets/sounds/notification-sound-other.wav"
+          ]
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/user.png",
+          "color": "#ffffff",
+          "sounds": [
+            "./assets/sounds/notification-sound.wav",
+            "./assets/sounds/notification-sound-other.wav"
+          ]
+        }
+      ]
+    ],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/user.png",
+        "backgroundColor": "#ffff"
+      },
+      "package": "com.sonny067.srmpay"
+    },
+    "web": {
+      "favicon": "./assets/images/user.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e3a64098-ab63-48b0-8dfd-37ab912db2ab"
+      }
+    }
+  }
+}
