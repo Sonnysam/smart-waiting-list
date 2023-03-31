@@ -13,6 +13,8 @@ import tw from "twrnc";
 import { auth, db } from "../firebase/firebase";
 import { AuthAction } from "../store/actions/AuthAction";
 import Colors from "../constants/Colors";
+import { Entypo } from "@expo/vector-icons";
+
 
 export default function Login() {
   const dispatch = useDispatch();

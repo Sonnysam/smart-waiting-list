@@ -4,11 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
-
 import Login from "./../screens/Login";
 import Signup from "./../screens/Signup";
-import Forgot from "./../screens/Forgot";
-import Success from "../screens/Success";
 import OnBoarding from "./../screens/Onboarding";
 import GetStarted from "./../screens/GetStarted";
 
@@ -26,7 +23,7 @@ export const InitialScreenOnStart = () => {
         }}
       />
       <Stack.Screen
-        name="GetSStarted"
+        name="GetStarted"
         component={GetStarted}
         options={{
           headerShown: false,
@@ -47,61 +44,13 @@ export const InitialScreenOnStart = () => {
         }}
       />
       <Stack.Screen
-        name="Hello"
-        component={Hello}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="UserDashboard"
         component={UserDashboard}
         options={{
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="Forgot"
-        component={Forgot}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Confirm"
-        component={Confirm}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Admin"
-        component={Admin}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="AdminLogin"
-        component={AdminLogin}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="AllUsers"
-        component={AllUsers}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="UserComplaints"
-        component={UserComplaints}
-        options={{
-          headerShown: false,
-        }}
-      />
+  
     </Stack.Navigator>
   );
 };
@@ -116,65 +65,10 @@ export const Dashboard = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="Calculate"
-        component={Calculate}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Offering"
-        component={Offering}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Tithe"
-        component={Tithe}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="PaySplash"
-        component={PaySplash}
-        options={{
-          headerShown: false,
-        }}
-      />
+
       <Stack.Screen
         name="UserDashboard"
         component={UserDashboard}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Success"
-        component={Success}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Needhelp"
-        component={Needhelp}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Complaint"
-        component={Complaint}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Seed"
-        component={Seed}
         options={{
           headerShown: false,
         }}
