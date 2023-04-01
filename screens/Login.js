@@ -15,8 +15,7 @@ import { AuthAction } from "../store/actions/AuthAction";
 import Colors from "../constants/Colors";
 import { Entypo } from "@expo/vector-icons";
 
-
-export default function Login() {
+export default function Login({ navigation }) {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -72,11 +71,17 @@ export default function Login() {
       <View style={styles.main}>
         <View style={styles.cardContainer}>
           <View style={styles.card}>
+            <View style={styles.appLogo}>
+              <Text style={styles.appLogoText}>Smart Waiting List</Text>
+            </View>
             <View style={styles.cardHeader}>
-              <TouchableOpacity style={styles.cardHeaderSignup}>
+              <TouchableOpacity
+                style={styles.cardHeaderSignup}
+                onPress={() => navigation.push("Signup")}
+              >
                 <Text style={styles.cardHeaderTextSignup}>Sign Up</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.cardHeaderLogin}>
+              <TouchableOpacity style={styles.cardHeaderLogin} onPress={() => navigation.push("Login")}>
                 <Text style={styles.cardHeaderTextLogin}>Login</Text>
               </TouchableOpacity>
             </View>
@@ -102,6 +107,7 @@ export default function Login() {
                     placeholder="Password"
                     placeholderTextColor="#000"
                     value={password}
+                    // style={styles.input}
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={secureTextEntry}
@@ -117,8 +123,22 @@ export default function Login() {
                 </View>
               </View>
             </View>
+            <View style={styles.cardForgot}>
+              <Text style={tw`text-[#0E75EF] font-bold text-base mt-3`}>
+                Forgot Password?
+              </Text>
+            </View>
             <View style={styles.cardFooter}>
-              <Text>Forgot Password?</Text>
+              {loading ? (
+                <ActivityIndicator size="large" color={Colors.primary} />
+              ) : (
+                <TouchableOpacity
+                  style={tw`bg-[#0E75EF] w-3/4 py-2 rounded-full items-center`}
+                  onPress={handleSignIn}
+                >
+                  <Text style={tw`text-white text-lg`}>Login</Text>
+                </TouchableOpacity>
+              )}
             </View>
           </View>
         </View>
@@ -149,14 +169,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
   },
+  appLogo: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  appLogoText: {
+    fontSize: 35,
+    fontWeight: "bold",
+    color: Colors.primary,
+  },
   cardHeader: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: Colors.white,
-    // elevation: 10,
-    // height: 40,
   },
   cardHeaderSignup: {
     backgroundColor: Colors.primary,
@@ -197,7 +225,8 @@ const styles = StyleSheet.create({
   loginCont: {
     width: "100%",
     justifyContent: "center",
-    marginVertical: 10,
+    // marginVertical: 10,
+    marginTop: 20,
   },
   input: {
     borderBottomColor: Colors.grey,
@@ -205,10 +234,11 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     paddingVertical: 2,
     paddingHorizontal: 10,
+    fontSize: 16,
   },
-  cardFooter:{
+  cardForgot: {
     flex: 1,
     flexDirection: "row",
-    justifyContent:"flex-end"
+    justifyContent: "flex-end",
   },
 });
