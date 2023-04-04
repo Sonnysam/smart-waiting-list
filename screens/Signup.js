@@ -30,7 +30,7 @@ export default function Signup({ navigation }) {
   const [loading, setLoading] = useState(false);
   const [imageUri, setImageUri] = useState(null);
 
-  const { name, email, password, churchName, phoneNo, profilePhoto } =
+  const { name, email, password, churchName, phoneNo, profilePhoto, confirmPassword } =
     useSelector((state) => state.AuthReducer);
 
   const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -100,6 +100,7 @@ export default function Signup({ navigation }) {
       <View style={styles.main}>
         <View style={styles.cardContainer}>
           <View style={styles.card}>
+            
             <View style={styles.cardHeader}>
               <TouchableOpacity
                 style={styles.cardHeaderSignup}
@@ -114,7 +115,7 @@ export default function Signup({ navigation }) {
                 <Text style={styles.cardHeaderTextLogin}>Login</Text>
               </TouchableOpacity>
             </View>
-            <View style={tw`mx-auto items-center justify-center`}>
+            <View style={tw`mx-auto items-center justify-center mb-7`}>
               {imageUri ? (
                 <Image
                   source={{ uri: imageUri }}
@@ -127,11 +128,15 @@ export default function Signup({ navigation }) {
                 />
               )}
               <TouchableOpacity onPress={pickImage} style={styles.btn}>
-                <Text style={styles.add}>
+                <Text style={{
+                  color: Colors.primary,
+                  fontSize: 16,
+                  fontWeight: "bold",
+                }}>
                   {" "}
                   <FontAwesome
                     name="file-photo-o"
-                    size={18}
+                    size={16}
                     color={Colors.primary}
                   />{" "}
                   Upload photo
@@ -141,6 +146,15 @@ export default function Signup({ navigation }) {
 
             <View style={styles.cardBody}>
               <View style={styles.loginCont}>
+              <TextInput
+                  style={styles.input}
+                  placeholder="Name"
+                  placeholderTextColor="#000"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  value={name}
+                  onChangeText={(text) => setName(text)}
+                />
                 <TextInput
                   style={styles.input}
                   placeholder="Email"
@@ -149,6 +163,16 @@ export default function Signup({ navigation }) {
                   autoCorrect={false}
                   value={email}
                   onChangeText={(text) => setEmail(text)}
+                />
+                  <TextInput
+                  style={styles.input}
+                  placeholder="Phone Number"
+                  placeholderTextColor="#000"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  value={phoneNo}
+                  keyboardType="phone-pad"
+                  onChangeText={(text) => phoneNo(text)}
                 />
                 <View
                   style={[
@@ -166,20 +190,39 @@ export default function Signup({ navigation }) {
                     secureTextEntry={secureTextEntry}
                     onChangeText={(text) => setPassword(text)}
                   />
-                  <TouchableOpacity onPress={toggleSecureTextEntry}>
+                  {/* <TouchableOpacity onPress={toggleSecureTextEntry}>
                     {secureTextEntry ? (
                       <Entypo name="eye" size={24} color="black" />
                     ) : (
                       <Entypo name="eye-with-line" size={24} color="black" />
                     )}
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
+                </View>
+                <View
+                  style={[
+                    styles.input,
+                    tw`flex flex-row items-center justify-between`,
+                  ]}
+                >
+                  <TextInput
+                    placeholder="Confirm Password"
+                    placeholderTextColor="#000"
+                    value={confirmPassword}
+                    // style={styles.input}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    secureTextEntry={secureTextEntry}
+                    onChangeText={(text) => confirmPassword(text)}
+                  />
+                  {/* <TouchableOpacity onPress={toggleSecureTextEntry}>
+                    {secureTextEntry ? (
+                      <Entypo name="eye" size={24} color="black" />
+                    ) : (
+                      <Entypo name="eye-with-line" size={24} color="black" />
+                    )}
+                  </TouchableOpacity> */}
                 </View>
               </View>
-            </View>
-            <View style={styles.cardForgot}>
-              <Text style={tw`text-[#0E75EF] font-bold text-base mt-3`}>
-                Forgot Password?
-              </Text>
             </View>
             <View style={styles.cardFooter}>
               {loading ? (
@@ -187,9 +230,9 @@ export default function Signup({ navigation }) {
               ) : (
                 <TouchableOpacity
                   style={tw`bg-[#0E75EF] w-3/4 py-2 rounded-full items-center`}
-                  // onPress={handleSignIn}
+                  onPress={handleSignUp}
                 >
-                  <Text style={tw`text-white text-lg`}>Login</Text>
+                  <Text style={tw`text-white text-lg`}>Sign Up</Text>
                 </TouchableOpacity>
               )}
             </View>
@@ -218,7 +261,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: Colors.white,
     width: "100%",
-    height: 400,
+    height: 500,
     borderRadius: 10,
     padding: 20,
   },
@@ -269,17 +312,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 20,
   },
   cardFooter: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 100,
   },
   loginCont: {
     width: "100%",
     justifyContent: "center",
-    // marginVertical: 10,
-    marginTop: 20,
+    marginTop: 50,
+    // marginBottom:30,
   },
   input: {
     borderBottomColor: Colors.grey,
@@ -288,10 +333,5 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 10,
     fontSize: 16,
-  },
-  cardForgot: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-end",
   },
 });
