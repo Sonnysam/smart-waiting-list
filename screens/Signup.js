@@ -4,34 +4,32 @@ import {
   View,
   TouchableOpacity,
   Image,
-  ScrollView,
   TextInput,
-  KeyboardAvoidingView,
-  Platform,
-  Linking,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { FontAwesome } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
-import { Feather } from "@expo/vector-icons";
-import Checkbox from "expo-checkbox";
 import { useSelector, useDispatch } from "react-redux";
 import { AuthAction } from "../store/actions/AuthAction";
 import { auth, db } from "../firebase/firebase";
-import { FontAwesome5 } from "@expo/vector-icons";
-import Pick from "../constants/Pick";
-import { Entypo } from "@expo/vector-icons";
 import tw from "twrnc";
 
 export default function Signup({ navigation }) {
   const dispatch = useDispatch();
-  const [isChecked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imageUri, setImageUri] = useState(null);
 
-  const { name, email, password, churchName, phoneNo, profilePhoto, confirmPassword } =
-    useSelector((state) => state.AuthReducer);
+  const {
+    name,
+    email,
+    password,
+    churchName,
+    phoneNo,
+    profilePhoto,
+    confirmPassword,
+  } = useSelector((state) => state.AuthReducer);
 
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
@@ -40,7 +38,6 @@ export default function Signup({ navigation }) {
   };
 
   const OpenWeb = () => {
-    // Linking.openURL("https://ag-pay-web.netlify.app/");
     console.log("hello");
   };
 
@@ -100,7 +97,6 @@ export default function Signup({ navigation }) {
       <View style={styles.main}>
         <View style={styles.cardContainer}>
           <View style={styles.card}>
-            
             <View style={styles.cardHeader}>
               <TouchableOpacity
                 style={styles.cardHeaderSignup}
@@ -128,11 +124,13 @@ export default function Signup({ navigation }) {
                 />
               )}
               <TouchableOpacity onPress={pickImage} style={styles.btn}>
-                <Text style={{
-                  color: Colors.primary,
-                  fontSize: 16,
-                  fontWeight: "bold",
-                }}>
+                <Text
+                  style={{
+                    color: Colors.primary,
+                    fontSize: 16,
+                    fontWeight: "bold",
+                  }}
+                >
                   {" "}
                   <FontAwesome
                     name="file-photo-o"
@@ -146,7 +144,7 @@ export default function Signup({ navigation }) {
 
             <View style={styles.cardBody}>
               <View style={styles.loginCont}>
-              <TextInput
+                <TextInput
                   style={styles.input}
                   placeholder="Name"
                   placeholderTextColor="#000"
@@ -164,7 +162,7 @@ export default function Signup({ navigation }) {
                   value={email}
                   onChangeText={(text) => setEmail(text)}
                 />
-                  <TextInput
+                <TextInput
                   style={styles.input}
                   placeholder="Phone Number"
                   placeholderTextColor="#000"
@@ -184,19 +182,11 @@ export default function Signup({ navigation }) {
                     placeholder="Password"
                     placeholderTextColor="#000"
                     value={password}
-                    // style={styles.input}
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={secureTextEntry}
                     onChangeText={(text) => setPassword(text)}
                   />
-                  {/* <TouchableOpacity onPress={toggleSecureTextEntry}>
-                    {secureTextEntry ? (
-                      <Entypo name="eye" size={24} color="black" />
-                    ) : (
-                      <Entypo name="eye-with-line" size={24} color="black" />
-                    )}
-                  </TouchableOpacity> */}
                 </View>
                 <View
                   style={[
@@ -208,19 +198,11 @@ export default function Signup({ navigation }) {
                     placeholder="Confirm Password"
                     placeholderTextColor="#000"
                     value={confirmPassword}
-                    // style={styles.input}
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={secureTextEntry}
                     onChangeText={(text) => confirmPassword(text)}
                   />
-                  {/* <TouchableOpacity onPress={toggleSecureTextEntry}>
-                    {secureTextEntry ? (
-                      <Entypo name="eye" size={24} color="black" />
-                    ) : (
-                      <Entypo name="eye-with-line" size={24} color="black" />
-                    )}
-                  </TouchableOpacity> */}
                 </View>
               </View>
             </View>
