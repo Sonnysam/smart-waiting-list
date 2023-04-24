@@ -34,7 +34,7 @@ export default function List() {
           </View>
         </View>
 
-        <View style={tw`flex mt-5 bg-gray-200 p-4 rounded-md shadow-md`}>
+        <View style={tw`flex mt-5 bg-white p-4 rounded-md shadow-lg`}>
           <View style={tw`flex-row justify-around items-center`}>
             <View style={tw`justify-center items-center`}>
               <FontAwesome name="users" size={45} color="gray" />
@@ -78,7 +78,7 @@ export default function List() {
             </View>
             <View style={tw`flex-row justify-center items-center`}>
               <Text>
-                <Feather name="search" size={15} color="gray" />
+                <Feather name="search" size={15} color="blue" />
               </Text>
             </View>
           </View>
@@ -97,6 +97,17 @@ export default function List() {
             )}
           />
         </View>
+        <View style={styles.bottom}>
+          <TouchableOpacity style={tw`bg-blue-500 p-4 rounded-md mt-5`}>
+            <Text
+              style={tw`
+            text-white text-center text-base font-semibold
+          `}
+            >
+              Logout
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -110,5 +121,9 @@ const styles = StyleSheet.create({
   main: {
     marginHorizontal: 15,
     marginTop: 25,
+  },
+  bottom: {
+    justifyContent: "flex-end",
+    marginTop: 20,
   },
 });
