@@ -16,7 +16,7 @@ import Colors from "../constants/Colors";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function Join() {
+export default function Join({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -72,7 +72,6 @@ export default function Join() {
                         Generate Code
                       </Text>
                     </TouchableOpacity>
-                    {/* {code ? "":()} */}
                   </View>
 
                   <View style={tw`flex items-center`}>
@@ -108,9 +107,7 @@ export default function Join() {
                     <View style={tw`mt-5`}>
                       <TouchableOpacity
                         style={tw`bg-blue-500 p-3 items-center rounded-md mt-2`}
-                        onPress={() => {
-                          // dispatch(AuthAction.login(email, password));
-                        }}
+                        onPress={() => navigation.push("List")}
                       >
                         <Text style={tw`text-white text-2xl font-bold`}>
                           Join Queue
@@ -119,7 +116,7 @@ export default function Join() {
                     </View>
                   ) : (
                     <View>
-                      <Text>{" "}</Text>
+                      <Text> </Text>
                     </View>
                   )}
                 </View>
