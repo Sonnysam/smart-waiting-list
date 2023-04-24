@@ -59,7 +59,7 @@ export default function Login({ navigation }) {
         getUserInfo(userCredentials.user);
         setLoading(false);
         // navigation.push("WelcomeUser");
-        navigation.push("DashboardU");
+        // navigation.push("DashboardU");
       })
       .catch((error) => {
         alert(error.message);
@@ -134,7 +134,8 @@ export default function Login({ navigation }) {
               ) : (
                 <TouchableOpacity
                   style={tw`bg-[#0E75EF] w-3/4 py-2 rounded-full items-center`}
-                  onPress={handleSignIn}
+                  // onPress={handleSignIn}
+                  onPress={() => navigation.push("Join")}
                 >
                   <Text style={tw`text-white text-lg`}>Login</Text>
                 </TouchableOpacity>

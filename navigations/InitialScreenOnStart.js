@@ -8,6 +8,7 @@ import Login from "./../screens/Login";
 import Signup from "./../screens/Signup";
 import OnBoarding from "./../screens/Onboarding";
 import GetStarted from "./../screens/GetStarted";
+import Join from "../screens/Join";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -44,13 +45,19 @@ export const InitialScreenOnStart = () => {
         }}
       />
       <Stack.Screen
+        name="Join"
+        component={Join}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Stack.Screen
         name="UserDashboard"
         component={UserDashboard}
         options={{
           headerShown: false,
         }}
-      />
-  
+      /> */}
     </Stack.Navigator>
   );
 };
