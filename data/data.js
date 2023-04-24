@@ -1,16 +1,16 @@
-const data = [
+export const data = [
   {
-    id: "1",
+    id: "123",
     name: "Samuel Agbenyo",
     image: require("../assets/images/user.png"),
   },
     {
-    id: "2",
+    id: "456",
     name: "John Teye",
     image: require("../assets/images/user.png"),
     },
     {
-    id: "3",
+    id: "789",
     name: "Bismark Yamoah",
     image: require("../assets/images/user.png"),
     },

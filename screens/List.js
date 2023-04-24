@@ -6,9 +6,10 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  FlatList,
 } from "react-native";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import tw from "twrnc";
 import { auth, db } from "../firebase/firebase";
 import { AuthAction } from "../store/actions/AuthAction";
@@ -16,6 +17,8 @@ import Colors from "../constants/Colors";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { data } from "../data/data";
+import { Feather } from "@expo/vector-icons";
 
 export default function List() {
   return (
@@ -25,7 +28,7 @@ export default function List() {
           <View>
             <Text style={tw`text-black text-2xl font-bold`}>Virtual Queue</Text>
           </View>
-          <View style={tw` flex-row justify-center items-center`}>
+          <View style={tw`flex-row justify-center items-center`}>
             <MaterialIcons name="notifications-on" size={24} color="black" />
             <Entypo name="dots-three-vertical" size={24} color="black" />
           </View>
@@ -36,14 +39,63 @@ export default function List() {
             <View style={tw`justify-center items-center`}>
               <FontAwesome name="users" size={45} color="gray" />
               <Text>People in waiting</Text>
-              <Text style={tw`bg-blue-200 p-1 text-base font-semibold rounded-md mt-2`}>56</Text>
+              <Text
+                style={tw`bg-blue-200 p-1 text-base font-semibold rounded-md mt-2`}
+              >
+                56
+              </Text>
             </View>
             <View style={tw`justify-center items-center`}>
               <Entypo name="clock" size={45} color="gray" />
               <Text>Approx. Wait time</Text>
-              <Text style={tw`bg-red-200 p-1 text-base font-semibold rounded-md mt-2`}>23mins</Text>
+              <Text
+                style={tw`bg-red-200 p-1 text-base font-semibold rounded-md mt-2`}
+              >
+                23mins
+              </Text>
             </View>
           </View>
+        </View>
+
+        <View>
+          <Text style={tw`text-gray-300 text-sm font-semibold mt-5 mb-2`}>
+            Consulting room
+          </Text>
+          <View style={tw`flex-row items-center`}>
+            <Image
+              style={tw`w-10 h-10 rounded-full`}
+              source={require("../assets/images/user.png")}
+            />
+            <Text style={tw`text-black text-base font-semibold ml-3`}>
+              Samuel Agbenyo
+            </Text>
+          </View>
+          <View style={tw`flex-row justify-between items-center mt-5`}>
+            <View>
+              <Text style={tw`text-gray-300 text-sm font-semibold`}>
+                In queue
+              </Text>
+            </View>
+            <View style={tw`flex-row justify-center items-center`}>
+              <Text>
+                <Feather name="search" size={15} color="gray" />
+              </Text>
+            </View>
+          </View>
+
+          <FlatList
+            data={data}
+            // keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <View style={tw`flex-row items-center my-2`}>
+                <Image style={tw`w-10 h-10 rounded-full`} source={item.image} />
+                <Text style={tw`text-black text-base font-semibold ml-3`}>
+                  {item.name}
+                </Text>
+              </View>
+            )}
+          />
         </View>
       </View>
     </View>
