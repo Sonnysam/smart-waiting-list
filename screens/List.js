@@ -59,9 +59,18 @@ export default function List() {
 
         <View>
           <Text style={tw`text-gray-300 text-sm font-semibold mt-5 mb-2`}>
-            Consulting room
+            In consulting room
           </Text>
-          <View style={tw`flex-row items-center`}>
+          <View
+            style={[
+              tw`flex-row items-center`,
+              {
+                backgroundColor: "#f7f7f7",
+                paddingHorizontal: 15,
+                paddingVertical: 10,
+              },
+            ]}
+          >
             <Image
               style={tw`w-10 h-10 rounded-full`}
               source={require("../assets/images/user.png")}
@@ -77,37 +86,39 @@ export default function List() {
               </Text>
             </View>
             <View style={tw`flex-row justify-center items-center`}>
-              <Text>
+              <Text style={{ display: "none" }}>
                 <Feather name="search" size={15} color="blue" />
               </Text>
             </View>
           </View>
-
-          <FlatList
-            data={data}
-            // keyExtractor={(item) => item.id}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <View style={tw`flex-row items-center my-2`}>
-                <Image style={tw`w-10 h-10 rounded-full`} source={item.image} />
-                <Text style={tw`text-black text-base font-semibold ml-3`}>
-                  {item.name}
-                </Text>
-              </View>
-            )}
-          />
         </View>
-        <View style={styles.bottom}>
-          <TouchableOpacity style={tw`bg-blue-500 p-4 rounded-md mt-5`}>
-            <Text
-              style={tw`
+      </View>
+      <FlatList
+        style={{ marginBottom: 50 }}
+        data={data}
+        // keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View
+            style={[tw`flex-row items-center my-2`, { marginHorizontal: 15 }]}
+          >
+            <Image style={tw`w-10 h-10 rounded-full`} source={item.image} />
+            <Text style={tw`text-black text-base font-semibold ml-3`}>
+              {item.name}
+            </Text>
+          </View>
+        )}
+      />
+      <View style={styles.bottom}>
+        <TouchableOpacity style={tw`bg-blue-500 p-4 mt-5`}>
+          <Text
+            style={tw`
             text-white text-center text-base font-semibold
           `}
-            >
-              Logout
-            </Text>
-          </TouchableOpacity>
-        </View>
+          >
+            Logout
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -125,5 +136,9 @@ const styles = StyleSheet.create({
   bottom: {
     justifyContent: "flex-end",
     marginTop: 20,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
 });
